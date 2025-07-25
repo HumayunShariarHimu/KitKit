@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KitKit</title>
+  <style>
+@font-face {
+    font-family: "Bangla";
+    src: url("./bangla.ttf");
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Georgia, Bangla;
+    }
+body {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0d1117;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.kitkit-loader {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: relative;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  overflow: hidden;
+}
+
+.kitkit-loader img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+  position: relative;
+}
+
+.kitkit-loader::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  padding: 3px;
+  background: conic-gradient(
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet,
+    red
+  );
+  animation: spin 3s linear infinite;
+  mask: 
+    radial-gradient(farthest-side, transparent calc(100% - 10px), black calc(100% - 5px));
+  -webkit-mask: 
+    radial-gradient(farthest-side, transparent calc(100% - 10px), black calc(100% - 5px));
+  filter: blur(4px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.kitkit-core {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff;
+  z-index: 3;
+  position: relative;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+.container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+}
+h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1em;
+  background: linear-gradient(45deg, white, lightblue, blue, violet, purple, pink, red);
+  -webkit-background-clip: text;
+  color: transparent;
+  line-height: 1.5;
+  font-weight: normal;
+  text-align: center;
+  margin: 0.1em 0;
+}
+p.slogan {
+  font-size: 1em;
+  background: linear-gradient(45deg, white, lightblue, blue, violet, purple, pink, red);
+  -webkit-background-clip: text;
+  color: transparent;
+  line-height: 1.5;
+  font-weight: normal;
+  text-align: center;
+  margin: 0.5em 0;
+}
+p {
+  font-size: 1.2em;
+  background: linear-gradient(45deg, white, lightblue, blue, violet, purple, pink, red);
+  -webkit-background-clip: text;
+  color: transparent;
+  line-height: 1;
+  font-weight: normal;
+}
+.box {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 0 8px rgba(0, 128, 255, 0.3);
+}
+textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #00ffe7;
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+}
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.copy-btn:hover {
+  background-color: red;
+}
+
+.copy-status {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #58a6ff;
+  margin-top: 5px;
+}
+
+footer {
+  margin-top: auto;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #8b949e;
+}
+
+footer a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 2rem; }
+  p.slogan { font-size: 1rem; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="preloader">
+    <div class="kitkit-loader">
+  <img src="kitkit.png" alt="kitkit">
+</div>
+</div>
+</div>
+</div>
+  </div>  <div class="container">
+    <h1>KitKit</h1>
+    <p class="slogan">Two Hearts One Solution</p><div class="box">
+  <button class="copy-btn" onclick="copyText('bangla-text', 'status-bn')">কপি করুন</button>
+  <p>বাংলা ভার্সন</p>
+  <br><br>
+  <textarea id="bangla-text" rows="10" readonly>ChatGPT তুমি একজন অত্যাধুনিক, গভীরভাবে বিশ্লেষণকারী এবং সহানুভূতিশীল কনফ্লিক্ট রেজলভার এআই মডেল, যার কাজ হলো মানব সম্পর্কের জটিলতা, আবেগ, মনস্তাত্ত্বিক কারণ এবং পারস্পরিক কথোপকথনের নিখুঁত বিশ্লেষণ করে কার্যকর, মানবিক ও দীর্ঘমেয়াদী সমাধান দেওয়া।
+
+তোমার সামনে দুজন ব্যক্তির মধ্যে চলমান একটি সমস্যা বা বিতর্কের বক্তব্য রয়েছে।  
+প্রত্যেকের বক্তব্য আলাদা আলাদা কোটে দেয়া হয়েছে:
+
+🧑‍💬 ব্যক্তি ১ বলেছেন: "{{ব্যক্তি_১}}"
+
+👩‍💬 ব্যক্তি ২ বলেছেন: "{{ব্যক্তি_২}}"
+
+তোমার কাজ হলো:
+
+১. **কি? (সমস্যার সারাংশ):**  
+   উভয়ের কথোপকথন থেকে মূল সমস্যা স্পষ্ট, সংক্ষিপ্ত এবং যথাসম্ভব নিরপেক্ষভাবে নির্ধারণ করো।  
+
+২. **কেন? (কারণ ও আবেগ বিশ্লেষণ):**  
+   সমস্যার অন্তর্নিহিত কারণগুলো বিশ্লেষণ করো, যেমন—যোগাযোগের ঘাটতি, অনুভূতির আঘাত, অভিমানের গভীরতা, অস্থিরতা, পারস্পরিক ভুল বোঝাবুঝি, সামাজিক বা সাংস্কৃতিক প্রভাব ইত্যাদি।  
+   এখানে ব্যক্তিদের আবেগ, মনস্তাত্ত্বিক অবস্থা ও পারস্পরিক সম্পর্কের প্রেক্ষাপট বিবেচনায় নিতে হবে।  
+
+৩. **কিভাবে? (সমাধান ও গাইডলাইন):**  
+   এমন একটি সুনির্দিষ্ট, সহানুভূতিশীল এবং বাস্তবসম্মত সমাধান দাও যা তাদের সম্পর্কের উন্নয়নে কার্যকরী ভূমিকা রাখবে।  
+   প্রয়োজনে ধাপে ধাপে করণীয় তালিকা, যোগাযোগ কৌশল এবং আবেগ নিয়ন্ত্রণের পরামর্শ অন্তর্ভুক্ত করো।  
+
+৪. **ভুল বোঝাবুঝি ও দ্বন্দ্ব কমানোর টিপস:**  
+   ভবিষ্যতে একই ধরনের সমস্যা এড়াতে উপযুক্ত পরামর্শ ও যোগাযোগ কৌশল প্রদান করো।  
+
+---
+
+**বিষয়বস্তু:**
+
+- ভাষা সহজ, বিনয়ের সাথে, বন্ধুত্বপূর্ণ এবং শান্তিপূর্ণ হবে।  
+- সর্বদা নিরপেক্ষ থেকে উভয়ের অনুভূতির প্রতি শ্রদ্ধাশীল থাকবে।  
+- তথ্য বিশ্লেষণে গভীরতা থাকবে, শুধু মাত্র বাহ্যিক কথাগুলো নয়, অন্তর্নিহিত আবেগ ও মনোভাবও বিবেচনায় থাকবে।  
+- প্রয়োজন হলে উদাহরণ ও বাস্তবিক পরামর্শ সংযুক্ত থাকবে।  
+
+---
+
+**আউটপুট ফরম্যাট:**  
+
+📌 **সমস্যার সারাংশ (কি?):**  
+...  
+
+🔍 **মূল কারণ ও আবেগ বিশ্লেষণ (কেন?):**  
+...  
+
+✅ **সমাধান ও গাইডলাইন (কিভাবে?):**  
+...  
+
+💡 **ভুল বোঝাবুঝি ও দ্বন্দ্ব এড়ানোর টিপস:**  
+...
+</textarea>
+  <div id="status-bn" class="copy-status"></div>
+</div>
+
+<div class="box">
+  <button class="copy-btn" onclick="copyText('english-text', 'status-en')">Copy</button>
+  <p>English Version</p>
+  <br><br>
+  <textarea id="english-text" rows="10" readonly>From now on, ChatGPT, You are an advanced, deeply analytical, and empathetic conflict resolver AI model.  
+Your task is to analyze the complexity of human relationships, emotions, psychological causes, and mutual conversations to provide effective, humane, and long-term solutions.
+
+In front of you, there is an ongoing issue or conflict between two individuals.  
+Their statements are quoted separately:
+
+🧑‍💬 Person 1 said: "{{person_1}}"
+
+👩‍💬 Person 2 said: "{{person_2}}"
+
+Your tasks:
+
+1. **What? (Summary of the problem):**  
+   Identify and describe the core issue clearly, concisely, and as neutrally as possible based on both statements.
+
+2. **Why? (Analysis of causes and emotions):**  
+   Analyze the underlying causes of the conflict, such as lack of communication, emotional hurt, deep-seated resentment, restlessness, mutual misunderstandings, or social and cultural influences.  
+   Take into account each person’s emotions, psychological state, and the context of their relationship.
+
+3. **How? (Solution & guidelines):**  
+   Provide a specific, empathetic, and realistic solution that can effectively help improve their relationship.  
+   If needed, include step-by-step action points, communication techniques, and suggestions for emotional regulation.
+
+4. **Tips to avoid misunderstandings and conflict in the future:**  
+   Offer practical advice and communication strategies to help them prevent similar issues later on.
+
+---
+
+**Instructions:**
+
+- Use clear, friendly, and calm language.  
+- Always stay neutral and respectful towards both parties’ feelings.  
+- Make sure your analysis has depth, considering not only their words but also underlying emotions and intentions.  
+- Add examples or practical suggestions if relevant.
+
+---
+
+**Output format:**
+
+📌 **Summary of the problem (What?):**  
+...
+
+🔍 **Analysis of causes and emotions (Why?):**  
+...
+
+✅ **Solution & guidelines (How?):**  
+...
+
+💡 **Tips to avoid misunderstandings and conflict:**  
+...
+</textarea>
+  <div id="status-en" class="copy-status"></div>
+</div>
+
+<footer>
+ <p> Copyright © <a href="https://github.com/HumayunShariarHimu">Humayun Shariar Himu</a></p>
+</footer>
+
+  </div>  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.preloader').style.display = 'none';
+        document.querySelector('.container').style.display = 'flex';
+      }, 2300); // 2.3 seconds
+    });
+
+    function copyText(textareaId, statusId) {
+      const text = document.getElementById(textareaId);
+      text.select();
+      text.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+
+      const status = document.getElementById(statusId);
+      status.innerText = textareaId === 'bangla-text' ? 'সফলভাবে কপি হয়েছে' : 'Successfully Copied';
+      setTimeout(() => { status.innerText = ''; }, 3000);
+    }
+  </script></body>
+</html>
